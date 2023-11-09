@@ -35,7 +35,8 @@
               <a href="./contacts" class="link">контакти</a>
             </li>
           </ul>
-          <ul class="contacts list">
+
+          <ul class="contacts">
             <li class="item">
               <a href="mailto:info@devstudio.com" class="link"
                 >info@devstudio.com</a
@@ -55,7 +56,19 @@
       <section class="hero">
         <div class="overlay">
           <h1 class="hero-title">Ефективні рішення для<br />вашого бізнесу</h1>
-          <a href="" class="button">Замовити послугу</a>
+
+          <button class="btn-open" data-open-modal>Замовити послугу</button>
+        </div>
+        <div class="backdrop is-hidden" data-backdrop>
+          <div class="modal">
+            <button class="btn-close" data-close-modal>
+              <svg>
+                <use
+                  href="./images/icons.svg/sprite-cloze.svg#icon-close-black"
+                ></use>
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -106,9 +119,16 @@
           <h2 class="whatarewedoing-title">Чим ми займаємося</h2>
           <ul class="whatarewedoing-list">
             <li class="list-item">
+              <div class="label">
+                <h3 class="label-title">Десктопні додатки</h3>
+              </div>
               <img src="./images/box1.jpg" alt="друкує" width="370" />
             </li>
+
             <li class="list-item">
+              <div class="label">
+                <h3 class="label-title">Мобільні додатки</h3>
+              </div>
               <img
                 src="./images/box2.jpg"
                 alt="дивиться в смартфон"
@@ -116,6 +136,9 @@
               />
             </li>
             <li class="list-item">
+              <div class="label">
+                <h3 class="label-title">Дизайнерські рішення</h3>
+              </div>
               <img
                 src="./images/box3.jpg"
                 alt="дивиться в планшет"
@@ -314,6 +337,7 @@
       <div class="clients">
         <h2 class="title">Постійні клієнти</h2>
         <ul class="clients list">
+          <a href="" target="_blank" rel="aria-label"></a>
           <li class="clients-item">
             <a href="" target="_blank" rel="aria-label">
               <svg class="action-icon">
@@ -414,5 +438,23 @@
         </ul>
       </div>
     </footer>
+    <script>
+      const refs = {
+        openModalBtn: document.querySelector("[data-open-modal]"),
+        closeModalBtn: document.querySelector("[data-close-modal]"),
+        backdrop: document.querySelector("[data-backdrop]"),
+      };
+      refs.openModalBtn.addEventListener("click", toggleModal);
+      refs.closeModalBtn.addEventListener("click", toggleModal);
+
+      refs.backdrop.addEventListener("click", logBackdropClick);
+
+      function toggleModal() {
+        refs.backdrop.classList.toggle("is-hidden");
+      }
+      function logBackdropClick() {
+        console.log("это клик в бекдроп");
+      }
+    </script>
   </body>
 </html>
